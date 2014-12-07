@@ -5,6 +5,7 @@ use warnings;
 use strict;
 
 print(get_fibs((prompt("what stage do you want?\n"))));
+
 #my $num = prompt("what stage do you want?\n");
 #for my fib (get_fibs($num)) {
 #  print(fib . "\n")
