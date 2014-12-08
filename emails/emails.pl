@@ -9,56 +9,21 @@ run();
 
 sub run {
   my $email = prompt("What is your email?\n");
-  my $email_type = get_email_type($email);
-  print("Your email is of type: " . $email_type);
+  my $email_type = get_email_url($email);
+  my $email_ending = get_email_url_ending($email);
+  print("Your email is of type: " . $email_type . "\n");
+  print("Your email ends with: " . $email_ending);
 }
 
-sub get_email_type {
+sub get_email_url {
   my ($str) = @_;
 
-  if (is_gmail($str)) {
-    return "gmail";
-  } elsif (is_yahoo($str)) {
-    return "yahoo";
-  } elsif (is_email_com($str)) {
-    return ".com";
-  } elsif (is_email($str)) {
-    return "an email";
+  if (is_email($str)) {
+    my ($first, $last) = split(/@/, $str);
+    return $last;
   }
 
   return "not an email";
-}
-sub is_gmail {
-  my ($str) = @_;
-
-  if (is_email($str)) {
-    if ($str =~ m/gmail\.com$/) {
-      return 1;
-    }
-  }
-
-  return 0;
-}
-
-sub is_yahoo {
-  my ($str) = @_;
-
-  if (is_email($str)) {
-    if ($str =~ m/yahoo\.com$/) {
-      return 1;
-    }
-  }
-
-  return 0;
-}
-
-sub is_email {
-  my ($text) = @_;
-  if ($text =~ m/.+@.+\..+/) {
-    return 1;
-  }
-
-  return 0;
 }
 
 sub is_email_com {
@@ -71,6 +36,27 @@ sub is_email_com {
   }
 
   return 0;
+}
+
+
+sub is_email {
+  my ($text) = @_;
+  if ($text =~ m/.+@.+\..+/) {
+    return 1;
+  }
+
+  return 0;
+}
+
+sub get_email_url_ending {
+  my ($str) = @_;
+
+  if (is_email($str)) {
+    my ($first, $last) = split(/@.+\./, $str);
+    return "." . $last
+  }
+
+  return "no ending";
 }
 
 sub prompt {
