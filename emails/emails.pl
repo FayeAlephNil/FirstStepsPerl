@@ -32,7 +32,7 @@ sub is_gmail {
   my ($str) = @_;
 
   if (is_email($str)) {
-    if ($str =~ m/gmail.com$/) {
+    if ($str =~ m/gmail\.com$/) {
       return 1;
     }
   }
@@ -44,7 +44,7 @@ sub is_yahoo {
   my ($str) = @_;
 
   if (is_email($str)) {
-    if ($str =~ m/yahoo.com$/) {
+    if ($str =~ m/yahoo\.com$/) {
       return 1;
     }
   }
@@ -65,7 +65,7 @@ sub is_email_com {
   my ($str) = @_;
 
   if (is_email($str)) {
-    if ($str =~ m/com$/) {
+    if ($str =~ m/@.+\.com$/) {
       return 1;
     }
   }
