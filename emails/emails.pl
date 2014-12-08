@@ -26,19 +26,6 @@ sub get_email_url {
   return "not an email";
 }
 
-sub is_email_com {
-  my ($str) = @_;
-
-  if (is_email($str)) {
-    if ($str =~ m/@.+\.com$/) {
-      return 1;
-    }
-  }
-
-  return 0;
-}
-
-
 sub is_email {
   my ($text) = @_;
   if ($text =~ m/.+@.+\..+/) {
