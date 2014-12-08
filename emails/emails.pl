@@ -54,7 +54,7 @@ sub is_yahoo {
 
 sub is_email {
   my ($text) = @_;
-  if ($text =~ m/@/) {
+  if ($text =~ m/.+@.+/) {
     return 1;
   }
 
